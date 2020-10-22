@@ -43,6 +43,7 @@ const AddModal=(props)=>{
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': 'Token ' + props.user.auth_token,
+          'Access-Control-Allow-Origin':'*'
         },
         method: "POST",
         body: JSON.stringify(item)

@@ -35,6 +35,7 @@ useEffect(()=>{
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + props.user.auth_token,
+            'Access-Control-Allow-Origin':'*'
           },
           method: "GET",
        
@@ -64,6 +65,7 @@ const edit=()=>{
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Token ' + props.user.auth_token,
+        'Access-Control-Allow-Origin':'*'
       },
       method: "PATCH",
       body: JSON.stringify({

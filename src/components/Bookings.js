@@ -73,12 +73,13 @@ import EditUser from './EditUser'
 
        
 
-    fetch("https://calendlio.sarayulabs.com//api/bookings",
+    fetch("https://calendlio.sarayulabs.com/api/bookings",
     {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': 'Token ' + props.user.auth_token,
+          'Access-Control-Allow-Origin':'*'
           
         },
         method: "GET",
@@ -109,12 +110,55 @@ import EditUser from './EditUser'
 
     },[])
 
+
+    const newBooking=()=>{
+           
+
+    fetch("https://calendlio.sarayulabs.com/api/bookings",
+    {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Token ' + props.user.auth_token,
+          'Access-Control-Allow-Origin':'*'
+          
+        },
+        method: "GET",
+        
+       
+  
+    }).then(res=>res.json()).then(res=>{
+    
+      
+      console.log(res)
+      console.log(props.user)
+
+    
+          setBookings(res.results);
+
+     
+
+   
+        
+    
+      
+    
+    
+    }).catch(error=>{
+        alert(error);
+    })
+
+    }
+
+
 const [isUserEditActive,setIsUserModelActive]=useState(false);
     const closeModals=()=>
     {
+      newBooking()
         setIsAddModalActive(false)
         setIsEditModalActive(false)
         setIsUserModelActive(false)
+        
     }
 
 
@@ -122,12 +166,13 @@ const [isUserEditActive,setIsUserModelActive]=useState(false);
   
     const  handleDelete = id => {
       // delete the item from the store
-      fetch("https://calendlio.sarayulabs.com//api/bookings/"+id,
+      fetch("https://calendlio.sarayulabs.com/api/bookings/"+id,
       {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': 'Token ' + props.user.auth_token,
+            'Access-Control-Allow-Origin':'*'
           },
           method: "DELETE",
           body: JSON.stringify(item)
@@ -136,7 +181,7 @@ const [isUserEditActive,setIsUserModelActive]=useState(false);
           console.log(res)
   
       
-  
+          newBooking()
    
          
       

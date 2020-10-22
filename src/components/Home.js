@@ -49,7 +49,8 @@ const submitHandler=()=>
     {
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*'
         },
         method: "POST",
         body: JSON.stringify({
@@ -93,7 +94,8 @@ const sendOTP=()=>
     {
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*'
         },
         method: "POST",
         body: JSON.stringify({
@@ -125,7 +127,8 @@ if(!(email && first_name && last_name && address && phone2))
 {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin':'*'
     },
     method: "POST",
     body: JSON.stringify({
